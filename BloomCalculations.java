@@ -67,25 +67,20 @@ public class BloomCalculations {
             double currTest = p;
             currSize = coreCalculations.optimizeSize(inputSize, numHashes, p);
             prevSize = 0;
-            //System.out.printf("\ninputSize = %d, calc size = %d \n", inputSize, currSize );
 
             for(int i = 0; i < 10; i ++){
                 prevProbability = currTest;
                 if((currTest = measureOne(arr)) > p){
-                    //System.out.printf("took %d iterations\n", i + 1);
                     return (i == 0)? currSize : prevSize;
                 }
-                //System.out.printf("%d: bestSize = %d, currTest = %f \n", i, bestSize, currTest);
                 if(currSize == prevSize){
                     shrinkFactor *= 0.9;
                 }
                 else{
                     prevSize = currSize;
                 }
-                //System.out.println("shrink to " + shrinkFactor);
                 currSize = coreCalculations.makeMultiple((int)(currSize * shrinkFactor));
             }
-            //System.out.printf("took > 10 iterations\n");
             return currSize;
         }
 
@@ -130,7 +125,6 @@ public class BloomCalculations {
          * @return optimum number of hashes */
         public int hashesNeeded(int n, int m){
             double ln2 = 0.6931471805599453094172;
-            //System.out.println(ln2 + " vs\n" + Math.log(2));
             return (int)Math.round((m/(double)n) * ln2);
         }
 
@@ -259,7 +253,5 @@ public class BloomCalculations {
             }
             return false;
         }
-
-
     }
 }
