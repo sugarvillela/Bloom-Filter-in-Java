@@ -108,7 +108,6 @@ public class BloomStore {
         public String toString(){
             String[] out = new String[store.length];
             for(int i = 0; i < store.length; i++){
-                //out[i] = BIT.str(store[i]);   // my impl
                 out[i] = Long.toString(store[i],2);
             }
             return String.join("\n", out);
