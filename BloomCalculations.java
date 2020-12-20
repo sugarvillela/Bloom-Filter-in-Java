@@ -1,7 +1,5 @@
 package codegen.translators.bloom;
 
-import datasource.TextSourceFile;
-
 import java.util.Random;
 
 public class BloomCalculations {
@@ -36,11 +34,6 @@ public class BloomCalculations {
             n++;
         }
         String[] arr = new BloomCalculations.RandStrings().get(n);
-        return bloomMeasurements.measureSize(arr, p, coreCalculations);
-    }
-
-    public int measureSize(String fileName, double p){
-        String[] arr = new TextSourceFile(fileName).toArray();
         return bloomMeasurements.measureSize(arr, p, coreCalculations);
     }
 
